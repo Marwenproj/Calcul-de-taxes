@@ -1,0 +1,11 @@
+.output{
+    
+    height: 100%; 
+    display: grid;
+    grid-template-rows:3fr 1fr;
+    
+}
+.totale{
+    height: fit-content;
+
+}
