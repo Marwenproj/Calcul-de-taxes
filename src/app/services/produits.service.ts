@@ -101,6 +101,7 @@ export class ProduitsService {
       }else{
         pttc = 0
       }
+      
       return pttc
   }
 

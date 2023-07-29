@@ -3,7 +3,7 @@
     <div class="col-5">
       <div class="row row-cols-3" >
         <div class="col-4" *ngFor="let produit of list_produits;let i = index" style="border: 1px solid  black;height: 100px;">
-          <div class="itemproduit"  (click)="getItem(i)">
+          <div class="itemproduit"  (click)="getItem(i)" >
             <div class="colnom">{{produit.nom}}</div>
             <div class="colprix">{{produit.prix}}€</div>
           </div>
@@ -15,7 +15,7 @@
         * {{item.nb}} {{item.indexP.nom}} à {{item.indexP.prix}}€
       </div>
     </div>
-    <div class="col-4" style="border: 1px solid  black;">#### Output
+    <div class="col-4" style="border: 1px solid  black;" *ngIf="!historique_facture">#### Output
       <div class="output">
         <div class="list">
           <div class="item" *ngFor="let item of Output_produits.produit" >
@@ -28,6 +28,34 @@
         </div>
       </div>
     </div>
+
+    <div class="col-4 " style="border: 1px solid  black; " *ngIf="historique_facture">#### historique facture
+      <div class="cont_histor">
+        <div class="output2" *ngFor="let item of historique_Output_produits">
+          {{item.output}}
+         <div *ngFor="let p of item.produit">
+          {{p.output}}* {{p.nb}} {{p.produit_Pht.indexP.nom}} à {{p.produit_Pht.indexP.prix}}€ : {{p.produit_t}} TTC
+         </div>
+      <div class="totale2" >
+        <div>Montant des taxes : {{item.Montant_des_taxes}}€</div>
+      <div>Total : {{item.total}}€</div>
+      </div>
+    </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="container_btn">
+    <div class="cont_btn">
+      <button type="button" class="btn btn-primary" (click)="facture()" [disabled]="!output_btn">PTTC</button>
+      <button type="button" class="btn btn-success" (click)="reset()" [disabled]="!reset_btn">Reset</button>
+      <button type="button" class="btn btn-warning" (click)="Onhistorique_facture()" [disabled]="!historique_facture_btn">Log </button>
+    </div>
+
+    
+   
+    
   </div>
 </div>
 

@@ -1,3 +1,11 @@
+.itemproduit{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
 .output{
     
     height: 100%; 
@@ -7,5 +15,28 @@
 }
 .totale{
     height: fit-content;
+
+}
+.container_btn{
+    margin-top: 50px;
+    /*border: 1px solid red;*/
+}
+.cont_btn{
+    /*border: 1px solid black;*/
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn{
+    width: 100px;
+    margin-left: 5px;
+}
+.cont_histor{
+    padding: 5px;
+    
+    display:block;
+    width:100%;
+    height:260px;
+    overflow:scroll;
 
 }
