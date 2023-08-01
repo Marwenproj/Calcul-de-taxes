@@ -1,0 +1,191 @@
+.container_p{
+    padding: 5px;
+    height: 100%;
+    width: 100%;
+    
+}
+.container_all{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.list_prod_header{
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: rgba(249, 250, 250, 0.932);
+}
+.title{
+    width: fit-content;
+}
+.btn_add_prod{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn_add_prod >button{
+    width: fit-content;
+
+}
+.container_prod{
+    margin-top: 10px;
+    height: 100%;
+    width: 35%;
+}
+
+.list_prod{
+    margin-top: 10px;
+}
+.produits_item{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.itemproduitcont{
+    margin: 1px;
+    border: 1px solid black;
+    height: 80px;
+    border-radius: 3px;
+   
+}
+.itemproduit{
+    display: flex;
+    flex-direction: column;
+   
+}
+.colnom{
+    text-align: center;
+    
+    height: 50px;
+}
+.colprix{
+    height: 30px;
+    margin-bottom: 0px;
+    
+    margin-right: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+.container_panier{
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 100%;
+    width: 25%;
+    
+}
+.cont_panier_commande{
+    display: flex;
+    flex-direction: column;
+}
+.cont_panier{
+    height: 350px;
+    
+}
+.header_panier{
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: rgba(249, 250, 250, 0.932);
+}
+.title_panier{
+    width: fit-content;
+    background-color: rgba(249, 250, 250, 0.932);
+}
+.btn_add_panier{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.item_panier{
+    margin-top: 10px;
+    height: 300px;
+    border: 1px solid black;
+}
+.btn_add_panier > button{
+    width: fit-content;
+    margin-left: 5px
+    
+}
+.container_commande{
+    margin-top: 10px;
+    height:250px;
+}
+
+.commandetitle{
+    padding: 5px;
+    height:50px;
+    background-color: rgba(249, 250, 250, 0.932);
+}
+.tab_comm {
+    height: 200px;
+    border: 1px solid black;
+    overflow:scroll;
+}
+.tab_comm >td{
+    border: 1px solid black;
+}
+
+/********************facture*********************/
+.container_facture{
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 600p;
+    width: 40%;
+    
+}
+.container_facture_header{
+    padding: 5px;
+    height: 40px;
+    background-color: rgba(249, 250, 250, 0.932);
+}
+.container_facture_commande{
+    border: 1px solid black;
+    height: 350px;
+    margin-top: 10px;
+}
+.container_facture_total{
+    border: 1px solid black;
+    height: 100px;
+    /*display: flex;
+    justify-content: end;*/
+}
+
+.total1 , .total2{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    
+
+}
+.tot,.res{
+    border: 1px solid black;
+    text-align: center;
+}
+.container_btn_total{
+    height: 100px;
+    
+    display: flex;
+    justify-content: end;
+}
+.btn_total{
+
+    height: 100%;
+    
+}
+.btn_total >button{
+    font-size: 25px;
+    margin-left: 10px;
+    margin-top: 5px;
+    height: 70px;
+    width: 180px;
+    
+}

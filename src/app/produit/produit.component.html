@@ -1,0 +1,122 @@
+<div class="container">
+   <div class="container2">
+    <div class="btn_add"></div>
+    <div class="lst_prod">
+        <div class="container_lst_prod">
+            <div class="container_prod" >
+                <div class="card">
+                    <div class="card-header"> 
+                        <div class="card_split">
+                            <div class="htitle">
+                                <h4>liste des Produits</h4>
+                            </div>
+                            <div class="hbtn">
+                              <button type="button" class="btn btn-primary" style="margin-right: 5px;" (click)="btn_back_home()">Home</button>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addproduit" (click)="openModal()">Ajouter produit</button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Produit</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Taxe</th>
+                            <th scope="col">Produit importé</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let produit of list_produits;let i = index">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{produit.nom_produit}}</td>
+                            <td>{{produit.prix_produit}}</td>
+                            <td>{{produit.taxe}}%</td>
+                            <td >{{produit.importe}}</td>
+                            <td>
+                                <div class="crud_btn">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteproduit"(click)="getIdProduit(produit.id)">Delete </button>
+                                </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addproduit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter Produit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="productForm" (ngSubmit)="createProduct(productForm.value)">
+            <div class="form-group">
+              <label for="nom-produit">Nom de produit</label>
+              <input formControlName="nom_produit" type="text" class="form-control" id="nom-produit" placeholder="nom">
+              <div class="alert alert-danger" role="alert" 
+              *ngIf="productForm.controls['nom_produit'].errors?.required && productForm.controls['nom_produit'].touched">
+                Nom de produit required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="prix-produit">prix de produit</label>
+              <input formControlName="prix_produit" type="number" step="0.01" class="form-control" id="prix-produit" placeholder="prix">
+              <div class="alert alert-danger" role="alert" 
+              *ngIf="productForm.controls['prix_produit'].errors?.required && productForm.controls['prix_produit'].touched">
+              prix de produit required
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="categorie">catégorie</label>
+              <select  formControlName="categorie" class="form-control" id="categorie" >
+                <option value="livre">Livre</option>
+                <option value="nourriture">nourriture</option>
+                <option value="médicament">médicament</option>
+                <option value="autre" [selected]="'autre'">autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="produit-importe">produit importé</label>
+              <select  formControlName="importe" class="form-control" id="produit-importe">
+                <option value="oui">oui</option>
+                <option value="non" [selected]="'non'">non</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+              <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Save changes</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- delete Modal -->
+<div class="modal fade" id="deleteproduit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">delete Produit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModaldelete()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        confirmer la suppression
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModaldelete()">Close</button>
+        <button type="submit" class="btn btn-primary" (click)="deleteProduit()">delete</button>
+      </div>
+    </div>
+  </div>
+</div>

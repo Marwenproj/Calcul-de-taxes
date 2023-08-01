@@ -1,0 +1,25 @@
+.container{
+    margin-top: 30px;
+}
+
+.card_split{
+   
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.htitle{
+   
+    width: fit-content;
+}
+.hbtn{
+    display: flex;
+    justify-content: flex-end;
+    
+    width: 100%;
+}
+.list-group{
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,275 @@
+<div class="container_p">
+  <div class="container_all">
+    <div class="container_prod">
+      <div class="container_list_prod">
+
+        <div class="list_prod_header">
+          <div class="title">
+            <h4>Produits</h4>
+          </div>
+          <div class="btn_add_prod">
+            <button class="btn btn-success" (click)="btn_page_produits()">ajouter produit</button>
+          </div>
+        </div>
+
+        <div class="list_prod">
+          <div class="produits_item">
+            <div class="itemproduitcont" *ngFor="let produit of list_produits;let i = index">
+              <div class="itemproduit"  (click)="getItem(i)" >
+                <div class="colnom">{{produit.nom_produit}}</div>
+                <div class="colprix">{{produit.prix_produit}}€</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container_panier">
+      <div class="cont_panier_commande">
+        <div class="cont_panier">
+          <div class="header_panier">
+            <div class="title_panier">
+              <h4>Panier</h4>
+            </div>
+            <div class="btn_add_panier">
+              <button class="btn btn-warning" (click)="reset_panier()">reset</button>
+              <button class="btn btn-primary" (click)="get_commandeNumbr()" >add commande</button>
+            </div>
+          </div>
+          <div class="item_panier">
+            <div class="full_item_panier" >
+              <div class="item" >
+                <table class="table table-striped">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">NB</th>
+                      <th scope="col">Produit</th>
+                      <th scope="col">PrixHT</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of Input_produits; let i = index">
+                      <td>{{item.nb}}</td>
+                      <td>{{item.indexP.nom_produit}}</td>
+                      <td>{{item.indexP.prix_produit}}€</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        <div class="container_commande">
+          <div class="commande_item" >
+
+            <div class="commandetitle">
+              <h4>Commandes</h4>
+             </div>
+         
+           <div class="tab_comm">
+            <table class="table table-striped">
+              <thead class="thead-light">
+                <tr>
+
+                  <th scope="col"># num commande</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of num_commande;let i =index" style="border: 1px solid rgb(207, 207, 207);">
+                  <td (click)="getcommande(item.num_commande)">Commande numéro {{i+1}}</td>
+                </tr>
+              </tbody>
+            </table>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container_facture" *ngIf="!totalfacture">
+      <div class="container_facture_all">
+        <div class="container_facture_header">
+          <h4>Facture</h4>
+        </div>
+        <div class="container_facture_commande">
+          
+          <table class="table table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">NB</th>
+                <th scope="col">Produit</th>
+                <th scope="col">Prix HT/u</th>
+                <th scope="col">Taxe/u</th>
+                <th scope="col">Prix TTC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of commande">
+                <td>{{item.nb}}</td>
+                <td>{{item.nom_produit}}</td>
+                <td >{{item.prix_produit}}€</td>
+                <td>0€</td>
+                <td >0€</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="container_facture_total">
+          <div class="total" >
+            <div class="total1">
+             <div class="tot"> <h4>Montant des taxes Total:</h4></div>
+             <div class="res"> <h4>0€</h4></div>
+            </div>
+            <div class="total2">
+              <div class="tot"> <h4>Total:</h4></div>
+             <div class="res"> <h4>0€</h4></div>
+            </div>
+          </div>
+        </div>
+        <div class="container_btn_total">
+          <div class="btn_total" >
+            <button class="btn btn-success" (click)=" reset_btn()">Reset</button>
+          </div>
+          <div class="btn_total" >
+            <button class="btn btn-warning" (click)="facture()">Total</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container_facture" *ngIf="totalfacture">
+      <div class="container_facture_all">
+        <div class="container_facture_header">
+          <h4>Facture</h4>
+        </div>
+        <div class="container_facture_commande">
+          
+          <table class="table table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">NB</th>
+                <th scope="col">Produit</th>
+                <th scope="col">Prix HT/u</th>
+                <th scope="col">Taxe/u</th>
+                <th scope="col">Prix TTC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of Output_produits.produit">
+                <td>{{item.nb}}</td>
+                <td>{{item.produit_Pht.nom_produit}}</td>
+                <td >{{item.produit_Pht.prix_produit}}€</td>
+                <td >{{item.taxe_unite}}€</td>
+                <td >{{item.produit_t}}€</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="container_facture_total">
+          <div class="total" >
+            <div class="total1">
+             <div class="tot"> <h4>Montant des taxes Total:</h4></div>
+             <div class="res"> <h4>{{Output_produits.Montant_des_taxes}}€</h4></div>
+            </div>
+            <div class="total2">
+              <div class="tot"> <h4>Total:</h4></div>
+             <div class="res"> <h4>{{Output_produits.total}}€</h4></div>
+            </div>
+          </div>
+        </div>
+        <div class="container_btn_total">
+          <div class="btn_total" >
+            <button class="btn btn-success" (click)=" reset_btn()">Reset</button>
+          </div>
+          <div class="btn_total" >
+            <button class="btn btn-warning" >Total</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container" style="margin:50px;">
+    <div class="row ">
+      <div class="col-5">
+        <div class="row row-cols-3" >
+          <div class="col-4" *ngFor="let produit of list_produits;let i = index" style="border: 1px solid  black;height: 100px;">
+            <div class="itemproduit"  (click)="getItem(i)" >
+              <div class="colnom">{{produit.nom}}</div>
+              <div class="colprix">{{produit.prix}}€</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3" style="border: 1px solid  black;">### INPUT
+        <div class="item" *ngFor="let item of Input_produits">
+          * {{item.nb}} {{item.indexP.nom}} à {{item.indexP.prix}}€
+        </div>
+      </div>
+      <div class="col-4" style="border: 1px solid  black;" *ngIf="!historique_facture">#### Output
+        <div class="output">
+          <div class="list">
+            <div class="item" *ngFor="let item of Output_produits.produit" >
+              * {{item.nb}} {{item.produit_Pht.indexP.nom}} à {{item.produit_Pht.indexP.prix}}€ : {{item.produit_t}} TTC
+            </div>
+          </div>
+          <div class="totale" >
+            <div>Montant des taxes : {{Output_produits.Montant_des_taxes}}€</div>
+          <div>Total : {{Output_produits.total}}€</div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-4 " style="border: 1px solid  black; " *ngIf="historique_facture">#### historique facture
+        <div class="cont_histor">
+          <div class="output2" *ngFor="let item of historique_Output_produits">
+            {{item.output}}
+           <div *ngFor="let p of item.produit">
+            {{p.output}}* {{p.nb}} {{p.produit_Pht.indexP.nom}} à {{p.produit_Pht.indexP.prix}}€ : {{p.produit_t}} TTC
+           </div>
+        <div class="totale2" >
+          <div>Montant des taxes : {{item.Montant_des_taxes}}€</div>
+        <div>Total : {{item.total}}€</div>
+        </div>
+      </div>
+        </div>
+      </div>
+  
+  
+    </div>
+    <div class="container_btn">
+      <div class="cont_btn">
+        <button type="button" class="btn btn-primary" (click)="facture()" [disabled]="!output_btn">PTTC</button>
+        <button type="button" class="btn btn-success" (click)="reset()" [disabled]="!reset_btn">Reset</button>
+        <button type="button" class="btn btn-warning" (click)="Onhistorique_facture()" [disabled]="!historique_facture_btn">Log </button>
+      </div>
+  
+      
+     
+      
+    </div>
+  </div> -->
